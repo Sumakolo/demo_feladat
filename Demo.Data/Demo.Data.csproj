@@ -65,41 +65,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DemoEntityDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoEntityDataModel.Context.tt</DependentUpon>
+    <Compile Include="Activity.cs">
+      <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
     </Compile>
-    <Compile Include="DemoEntityDataModel.cs">
+    <Compile Include="DemoEntityDataModell.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DemoEntityDataModel.tt</DependentUpon>
+      <DependentUpon>DemoEntityDataModell.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DemoEntityDataModel.Designer.cs">
+    <Compile Include="DemoEntityDataModell.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DemoEntityDataModel.edmx</DependentUpon>
+      <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DemoEntityDataModell.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DemoDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>DemoDB.mdf</DependentUpon>
-    </Content>
-    <Content Include="DemoEntityDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DemoEntityDataModel.Context.cs</LastGenOutput>
-      <DependentUpon>DemoEntityDataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="DemoEntityDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DemoEntityDataModel.edmx</DependentUpon>
-      <LastGenOutput>DemoEntityDataModel.cs</LastGenOutput>
-    </Content>
+    <Compile Include="Task.cs">
+      <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -114,20 +104,43 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="DemoEntityDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DemoEntityDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="DemoEntityDataModel.edmx.diagram">
-      <DependentUpon>DemoEntityDataModel.edmx</DependentUpon>
+    <EntityDeploy Include="DemoEntityDataModell.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DemoEntityDataModell.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DemoEntityDataModell.edmx.diagram">
+      <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.Models\Demo.Models.csproj">
+      <Project>{cd1270b2-1dbe-4443-92fa-4a99b914167a}</Project>
+      <Name>Demo.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DemoDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>DemoDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="DemoEntityDataModell.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
+      <LastGenOutput>DemoEntityDataModell.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DemoEntityDataModell.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
+      <LastGenOutput>DemoEntityDataModell.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

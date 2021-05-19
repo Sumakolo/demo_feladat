@@ -9,22 +9,31 @@ namespace Demo.Models
     public class Activity
     {
         /// <summary>
-        /// The ID for an activity.
+        /// The ID of the activity.
         /// </summary>
         public string ActID { get; set; }
 
         /// <summary>
-        /// The name of the activity.
+        /// The date of the activity.
         /// </summary>
-        public string ActName { get; set; }
+        public DateTime ActDate { get; set; }
+        /// <summary>
+        /// The ID of the employee.
+        /// </summary>
+        public string EmpName { get; set; }
 
         /// <summary>
-        /// The time the activity used up in hours.
+        /// The ID of the task.
+        /// </summary>
+        public string TaskName { get; set; }
+
+        /// <summary>
+        /// The time of the activity in hours.
         /// </summary>
         public int ActTimeHours { get; set; }
 
         /// <summary>
-        /// The time the activity used up in minutes
+        /// The time the activity used up in minutes.
         /// </summary>
         public int ActTimeMinutes { get; set; }
 

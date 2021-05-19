@@ -11,21 +11,16 @@ namespace Demo.Models
         /// <summary>
         /// The ID for the employee.
         /// </summary>
-        public string EmpID { get; set; }
+        public string EmpID { get; set; } //primary key
 
         /// <summary>
-        /// The last name of the employee.
+        /// The employee's name.
         /// </summary>
-        public string LastName { get; set; }
+        public string EmpName { get; set; }
 
         /// <summary>
-        /// The first name of the employee.
+        /// The employee's password.
         /// </summary>
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// List about the employee's activities.
-        /// </summary>
-        public List<Activity> ActivityList { get; set; }
+        public string EmpPassword { get; set; }
     }
 }
