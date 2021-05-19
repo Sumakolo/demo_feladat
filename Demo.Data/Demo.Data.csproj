@@ -68,6 +68,7 @@
     <Compile Include="Activity.cs">
       <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
     </Compile>
+    <Compile Include="DemoDBContext.cs" />
     <Compile Include="DemoEntityDataModell.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

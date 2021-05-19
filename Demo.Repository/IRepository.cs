@@ -19,7 +19,7 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="item"></param>
         /// <returns>T</returns>
-        T AddOne(T item);
+        void AddOne(T item);
 
         /// <summary>
         /// Delete one T item.
