@@ -9,7 +9,7 @@ namespace Demo.Repository
 {
     public class ActivityRepository : IRepository<Activity>
     {
-        DemoDBContext demoDBContext;
+        DemoDBContext demoDBContext = new DemoDBContext();
 
         /// <summary>
         /// Add one activity to the database.

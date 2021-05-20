@@ -9,7 +9,7 @@ namespace Demo.Repository
 {
     public class TaskRepository : IRepository<Data.Task>
     {
-        DemoDBContext demoDBContext;
+        DemoDBContext demoDBContext = new DemoDBContext();
 
         /// <summary>
         /// Add one task to the database.

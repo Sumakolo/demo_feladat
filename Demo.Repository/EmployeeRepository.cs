@@ -10,7 +10,7 @@ namespace Demo.Repository
 {
     public class EmployeeRepository : IRepository<Employee>
     {
-        DemoDBContext demoDBContext;
+        DemoDBContext demoDBContext = new DemoDBContext();
 
         /// <summary>
         /// Add one employee to the database.

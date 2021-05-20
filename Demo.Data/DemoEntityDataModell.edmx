@@ -92,7 +92,7 @@
           <Key>
             <PropertyRef Name="EmpName" />
           </Key>
-          <Property Name="EmpID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmpID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmpName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmpPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Activities" Relationship="Self.FK_empname" FromRole="Employee" ToRole="Activity" />
@@ -101,7 +101,7 @@
           <Key>
             <PropertyRef Name="TaskName" />
           </Key>
-          <Property Name="TaskID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TaskID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TaskName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Activities" Relationship="Self.FK_taskname" FromRole="Task" ToRole="Activity" />
         </EntityType>
