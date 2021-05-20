@@ -19,6 +19,7 @@ namespace Demo.Repository
         public void AddOne(Employee item)
         {
             demoDBContext.employees.Add(item);
+            demoDBContext.SaveChanges();
         }
 
         /// <summary>
@@ -28,6 +29,18 @@ namespace Demo.Repository
         public void DeleteOne(Employee item)
         {
             demoDBContext.employees.Remove(item);
+            demoDBContext.SaveChanges();
+        }
+
+        /// <summary>
+        /// Delete ont employee from the database by it's id.
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeleteOne(string id)
+        {
+            Employee emp = demoDBContext.employees.FirstOrDefault(item => item.EmpID == id);
+            DeleteOne(emp);
+            
         }
 
         /// <summary>
@@ -48,5 +61,36 @@ namespace Demo.Repository
         {
             return demoDBContext.employees.FirstOrDefault(item => item.EmpName == name);
         }
+
+        /// <summary>
+        /// Updates an employee in the database.
+        /// </summary>
+        /// <param name="oldID"></param>
+        /// <param name="newItem"></param>
+        public void Update(string oldID, Employee newItem)
+        {
+            var oldItem = demoDBContext.employees.FirstOrDefault(item => item.EmpID == oldID);
+            oldItem.EmpID = newItem.EmpID;
+            oldItem.EmpName = newItem.EmpName;
+            oldItem.EmpPassword = newItem.EmpPassword;
+            demoDBContext.SaveChanges();
+        }
+
+        /// <summary>
+        /// Returns the repository as a string.
+        /// </summary>
+        /// <returns>StringBuilder.</returns>
+        public StringBuilder GetTableContents()
+        {
+            List<Employee> employees = GetAll().ToList();
+            StringBuilder builder = new StringBuilder();
+            foreach (var x in employees)
+            {
+                builder.AppendLine("EmployeeID:" + x.EmpID + " | Name: " + x.EmpName + " | Password: " + x.EmpPassword);
+            }
+            return builder;
+        }
+
+        
     }
 }

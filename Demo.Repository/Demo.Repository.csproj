@@ -62,10 +62,6 @@
       <Project>{14ee4e3c-3bbd-41fc-9964-105bc354a4c3}</Project>
       <Name>Demo.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Demo.Models\Demo.Models.csproj">
-      <Project>{cd1270b2-1dbe-4443-92fa-4a99b914167a}</Project>
-      <Name>Demo.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

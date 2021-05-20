@@ -7,7 +7,7 @@ using Demo.Data;
 
 namespace Demo.Repository
 {
-    class TaskRepository : IRepository<Data.Task>
+    public class TaskRepository : IRepository<Data.Task>
     {
         DemoDBContext demoDBContext;
 
@@ -18,6 +18,7 @@ namespace Demo.Repository
         public void AddOne(Data.Task item)
         {
             demoDBContext.tasks.Add(item);
+            demoDBContext.SaveChanges();
         }
 
         /// <summary>
@@ -27,6 +28,17 @@ namespace Demo.Repository
         public void DeleteOne(Data.Task item)
         {
             demoDBContext.tasks.Remove(item);
+            demoDBContext.SaveChanges();
+        }
+
+        /// <summary>
+        /// Delete ont task from the database by it's id.
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeleteOne(string id)
+        {
+            Data.Task task = demoDBContext.tasks.FirstOrDefault(item => item.TaskID == id);
+            DeleteOne(task);
         }
 
         /// <summary>
@@ -47,5 +59,35 @@ namespace Demo.Repository
         {
             return demoDBContext.tasks.FirstOrDefault(item => item.TaskName == name);
         }
+
+        /// <summary>
+        /// Update the properties of a Task.
+        /// </summary>
+        /// <param name="oldID"></param>
+        /// <param name="newItem"></param>
+        void IRepository<Data.Task>.Update(string oldID, Data.Task newItem)
+        {
+            var oldItem = demoDBContext.tasks.FirstOrDefault(item => item.TaskID == oldID);
+            oldItem.TaskID = newItem.TaskID;
+            oldItem.TaskName = newItem.TaskName;
+            demoDBContext.SaveChanges();
+        }
+
+        /// <summary>
+        /// Returns the repository as a string.
+        /// </summary>
+        /// <returns>StringBuilder.</returns>
+        public StringBuilder GetTableContents()
+        {
+            List<Data.Task> tasks = GetAll().ToList();
+            StringBuilder builder = new StringBuilder();
+            foreach(var x in tasks)
+            {
+                builder.AppendLine("TaskID:" + x.TaskID + " | TaskName: " + x.TaskName);
+            }
+            return builder;
+        }
+
+        
     }
 }
