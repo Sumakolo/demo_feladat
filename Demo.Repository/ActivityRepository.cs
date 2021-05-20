@@ -35,7 +35,7 @@ namespace Demo.Repository
         /// Delete one activity from the database by id.
         /// </summary>
         /// <param name="item"></param>
-        public void DeleteOne(string id)
+        public void DeleteOneByID(string id)
         {
             Activity activity = demoDBContext.activities.FirstOrDefault(item => item.ActID == id);
             DeleteOne(activity);

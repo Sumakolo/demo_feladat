@@ -25,7 +25,7 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        void DeleteOne(string id);
+        void DeleteOneByID(string id);
 
         /// <summary>
         /// Delete one T item.

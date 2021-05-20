@@ -35,7 +35,7 @@ namespace Demo.Repository
         /// Delete ont task from the database by it's id.
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteOne(string id)
+        public void DeleteOneByID(string id)
         {
             Data.Task task = demoDBContext.tasks.FirstOrDefault(item => item.TaskID == id);
             DeleteOne(task);
@@ -65,7 +65,7 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="oldID"></param>
         /// <param name="newItem"></param>
-        void IRepository<Data.Task>.Update(string oldID, Data.Task newItem)
+        public void Update(string oldID, Data.Task newItem)
         {
             var oldItem = demoDBContext.tasks.FirstOrDefault(item => item.TaskID == oldID);
             oldItem.TaskID = newItem.TaskID;

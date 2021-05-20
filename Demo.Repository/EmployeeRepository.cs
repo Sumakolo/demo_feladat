@@ -36,7 +36,7 @@ namespace Demo.Repository
         /// Delete ont employee from the database by it's id.
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteOne(string id)
+        public void DeleteOneByID(string id)
         {
             Employee emp = demoDBContext.employees.FirstOrDefault(item => item.EmpID == id);
             DeleteOne(emp);
