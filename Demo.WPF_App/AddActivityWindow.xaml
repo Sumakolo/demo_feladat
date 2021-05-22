@@ -1,0 +1,24 @@
+﻿<Window x:Class="Demo.WPF_App.AddActivityWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo.WPF_App"
+        mc:Ignorable="d"
+        Title="AddActivityWindow" Height="450" Width="400">
+    <Grid>
+        <Label Content="Add new Activity" Margin="147,30,147.6,0" VerticalAlignment="Top"/>
+        <Label Content="Task:" HorizontalAlignment="Left" Margin="53,80,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="170,80,0,0" VerticalAlignment="Top" Width="151" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Label Content="Time taken:" HorizontalAlignment="Left" Margin="53,130,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="265,132,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.917,0.571"/>
+        <ComboBox HorizontalAlignment="Left" Margin="174,132,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label Content="hours" HorizontalAlignment="Left" Margin="220,130,0,0" VerticalAlignment="Top"/>
+        <Label Content="minutes" HorizontalAlignment="Left" Margin="321,130,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description:" HorizontalAlignment="Left" Margin="53,180,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="113" Margin="170,184,0,0" TextWrapping="Wrap" Text="Short description of the task. (optional)" VerticalAlignment="Top" Width="151"/>
+        <Button Content= "Back" HorizontalAlignment="Left" Margin="27,360,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
+        <Button Content= "Add Activity" HorizontalAlignment="Left" Margin="270,360,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
+
+    </Grid>
+</Window>

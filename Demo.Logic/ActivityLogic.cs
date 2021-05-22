@@ -11,7 +11,6 @@ namespace Demo.Logic
     public class ActivityLogic : ILogic<Activity>
     {     
         ActivityRepository activityRepository;
-        //TaskLogic tasklogic;
         
         /// <summary>
         /// Constructor for the ActivityLogic class.
@@ -20,7 +19,6 @@ namespace Demo.Logic
         public ActivityLogic(ActivityRepository activityRepository)
         {          
             this.activityRepository = activityRepository;
-            
         }
 
         /// <summary>
@@ -29,10 +27,8 @@ namespace Demo.Logic
         /// <param name="item"></param>
         public void Create(Activity item)
         {
-            //Data.Task task = new Data.Task();
-            //task.TaskName = item.TaskName;
-            //tasklogic.Create(item.TaskName)
-            //activityRepository.AddOne(item);
+            activityRepository.AddOne(item);
+            
         }
 
         /// <summary>
