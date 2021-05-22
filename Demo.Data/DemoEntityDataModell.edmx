@@ -4,55 +4,54 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DemoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DemoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="ActID" />
           </Key>
-          <Property Name="ActID" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="ActDate" Type="date" />
-          <Property Name="EmpName" Type="varchar" MaxLength="255" />
-          <Property Name="TaskName" Type="varchar" MaxLength="255" />
-          <Property Name="ActTimeHours" Type="int" />
-          <Property Name="ActTimeMinutes" Type="int" />
+          <Property Name="ActID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActDate" Type="date" Nullable="false" />
+          <Property Name="EmpID" Type="int" Nullable="false" />
+          <Property Name="TaskID" Type="int" Nullable="false" />
+          <Property Name="ActTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="ActDescription" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="EmpName" />
+            <PropertyRef Name="EmpID" />
           </Key>
-          <Property Name="EmpID" Type="varchar" MaxLength="30" />
-          <Property Name="EmpName" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="EmpPassword" Type="varchar" MaxLength="255" />
+          <Property Name="EmpID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmpUserName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmpPassword" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
-            <PropertyRef Name="TaskName" />
+            <PropertyRef Name="TaskID" />
           </Key>
-          <Property Name="TaskID" Type="varchar" MaxLength="30" />
+          <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskName" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <Association Name="FK_empname">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+        <Association Name="FK__Activity__EmpID__49C3F6B7">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
-              <PropertyRef Name="EmpName" />
+              <PropertyRef Name="EmpID" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="EmpName" />
+              <PropertyRef Name="EmpID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_taskname">
-          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+        <Association Name="FK__Activity__TaskID__4AB81AF0">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
           <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Task">
-              <PropertyRef Name="TaskName" />
+              <PropertyRef Name="TaskID" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="TaskName" />
+              <PropertyRef Name="TaskID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -60,121 +59,118 @@
           <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_empname" Association="Self.FK_empname">
+          <AssociationSet Name="FK__Activity__EmpID__49C3F6B7" Association="Self.FK__Activity__EmpID__49C3F6B7">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
-          <AssociationSet Name="FK_taskname" Association="Self.FK_taskname">
+          <AssociationSet Name="FK__Activity__TaskID__4AB81AF0" Association="Self.FK__Activity__TaskID__4AB81AF0">
             <End Role="Task" EntitySet="Task" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DemoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DemoDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tasks" EntityType="DemoDBModel.Task" />
+          <EntitySet Name="Employees" EntityType="DemoDBModel.Employee" />
+          <EntitySet Name="Activities" EntityType="DemoDBModel.Activity" />
+          <AssociationSet Name="FK__Activity__EmpID__49C3F6B7" Association="DemoDBModel.FK__Activity__EmpID__49C3F6B7">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Activity__TaskID__4AB81AF0" Association="DemoDBModel.FK__Activity__TaskID__4AB81AF0">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Activities" Relationship="DemoDBModel.FK__Activity__TaskID__4AB81AF0" FromRole="Task" ToRole="Activity" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpUserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmpPassword" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Activities" Relationship="DemoDBModel.FK__Activity__EmpID__49C3F6B7" FromRole="Employee" ToRole="Activity" />
+        </EntityType>
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="ActID" />
           </Key>
-          <Property Name="ActID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ActDate" Type="DateTime" Precision="0" />
-          <Property Name="EmpName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="TaskName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ActTimeHours" Type="Int32" />
-          <Property Name="ActTimeMinutes" Type="Int32" />
+          <Property Name="ActID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EmpID" Type="Int32" Nullable="false" />
+          <Property Name="TaskID" Type="Int32" Nullable="false" />
+          <Property Name="ActTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="ActDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_empname" FromRole="Activity" ToRole="Employee" />
-          <NavigationProperty Name="Task" Relationship="Self.FK_taskname" FromRole="Activity" ToRole="Task" />
+          <NavigationProperty Name="Employee" Relationship="DemoDBModel.FK__Activity__EmpID__49C3F6B7" FromRole="Activity" ToRole="Employee" />
+          <NavigationProperty Name="Task" Relationship="DemoDBModel.FK__Activity__TaskID__4AB81AF0" FromRole="Activity" ToRole="Task" />
         </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="EmpName" />
-          </Key>
-          <Property Name="EmpID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmpName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmpPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Activities" Relationship="Self.FK_empname" FromRole="Employee" ToRole="Activity" />
-        </EntityType>
-        <EntityType Name="Task">
-          <Key>
-            <PropertyRef Name="TaskName" />
-          </Key>
-          <Property Name="TaskID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TaskName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Activities" Relationship="Self.FK_taskname" FromRole="Task" ToRole="Activity" />
-        </EntityType>
-        <Association Name="FK_empname">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+        <Association Name="FK__Activity__EmpID__49C3F6B7">
+          <End Type="DemoDBModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DemoDBModel.Activity" Role="Activity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
-              <PropertyRef Name="EmpName" />
+              <PropertyRef Name="EmpID" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="EmpName" />
+              <PropertyRef Name="EmpID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_taskname">
-          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+        <Association Name="FK__Activity__TaskID__4AB81AF0">
+          <End Type="DemoDBModel.Task" Role="Task" Multiplicity="1" />
+          <End Type="DemoDBModel.Activity" Role="Activity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Task">
-              <PropertyRef Name="TaskName" />
+              <PropertyRef Name="TaskID" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="TaskName" />
+              <PropertyRef Name="TaskID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DemoDBEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Activities" EntityType="Self.Activity" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Tasks" EntityType="Self.Task" />
-          <AssociationSet Name="FK_empname" Association="Self.FK_empname">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Activity" EntitySet="Activities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_taskname" Association="Self.FK_taskname">
-            <End Role="Task" EntitySet="Tasks" />
-            <End Role="Activity" EntitySet="Activities" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DemoDBModelStoreContainer" CdmEntityContainer="DemoDBEntities1">
-          <EntitySetMapping Name="Activities">
-            <EntityTypeMapping TypeName="DemoDBModel.Activity">
-              <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="ActID" ColumnName="ActID" />
-                <ScalarProperty Name="ActDate" ColumnName="ActDate" />
-                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="DemoDBModel.Task">
+              <MappingFragment StoreEntitySet="Task">
                 <ScalarProperty Name="TaskName" ColumnName="TaskName" />
-                <ScalarProperty Name="ActTimeHours" ColumnName="ActTimeHours" />
-                <ScalarProperty Name="ActTimeMinutes" ColumnName="ActTimeMinutes" />
-                <ScalarProperty Name="ActDescription" ColumnName="ActDescription" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="DemoDBModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
                 <ScalarProperty Name="EmpPassword" ColumnName="EmpPassword" />
+                <ScalarProperty Name="EmpUserName" ColumnName="EmpUserName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="DemoDBModel.Task">
-              <MappingFragment StoreEntitySet="Task">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="DemoDBModel.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="ActDescription" ColumnName="ActDescription" />
+                <ScalarProperty Name="ActTime" ColumnName="ActTime" />
                 <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ActDate" ColumnName="ActDate" />
+                <ScalarProperty Name="ActID" ColumnName="ActID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

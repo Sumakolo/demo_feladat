@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Demo.Repository;
 using Demo.Data;
 
 namespace Demo.Logic
 {
-    public class TaskLogic : ILogic<Data.Task>
+    public class TaskLogic : ILogic<Task>
     {
         TaskRepository taskRepository;
 
@@ -25,7 +24,7 @@ namespace Demo.Logic
         /// Add a new Task item to the database.
         /// </summary>
         /// <param name="item"></param>
-        public void Create(Data.Task item)
+        public void Create(Task item)
         {
             taskRepository.AddOne(item);
         }
@@ -34,16 +33,16 @@ namespace Demo.Logic
         /// Delete a Task item from the database.
         /// </summary>
         /// <param name="item"></param>
-        public void Delete(Data.Task item)
-        {
-            taskRepository.DeleteOne(item);
-        }
+        //public void Delete(Data.Task item)
+        //{
+        //    taskRepository.DeleteOne(item);
+        //}
 
         /// <summary>
         /// Delete a Task item from the database by it's ID.
         /// </summary>
         /// <param name="id"></param>
-        public void Delete(string id)
+        public void Delete(int id)
         {
             taskRepository.DeleteOneByID(id);
         }
@@ -52,7 +51,7 @@ namespace Demo.Logic
         /// Returns all Task items.
         /// </summary>
         /// <returns></returns>
-        public IList<Data.Task> GetAll()
+        public IList<Task> GetAll()
         {
             return taskRepository.GetAll();
         }
@@ -62,7 +61,7 @@ namespace Demo.Logic
         /// </summary>
         /// <param name="oldID"></param>
         /// <param name="newitem"></param>
-        public void Update(string oldID, Data.Task newitem)
+        public void Update(int oldID, Task newitem)
         {
             taskRepository.Update(oldID, newitem);
         }

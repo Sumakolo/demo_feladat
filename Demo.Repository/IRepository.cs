@@ -25,20 +25,14 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        void DeleteOneByID(string id);
-
-        /// <summary>
-        /// Delete one T item.
-        /// </summary>
-        /// <param name="item"></param>
-        void DeleteOne(T item);
+        void DeleteOneByID(int id);
 
         /// <summary>
         /// Update an item from the repository.
         /// </summary>
         /// <param name="oldID"></param>
         /// <param name="newItem"></param>
-        void Update(string oldID, T newItem);
+        void Update(int oldID, T newItem);
 
         /// <summary>
         /// Returns the repository contents as a string.

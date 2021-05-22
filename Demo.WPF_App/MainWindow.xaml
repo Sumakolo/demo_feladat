@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="304,123,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="135"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="304,173,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="135"/>
+
+        <Label Content="Tevékenységnapló" HorizontalAlignment="Left" Margin="292,31,0,0" VerticalAlignment="Top" Width="196" FontSize="20"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="304,228,0,0" VerticalAlignment="Top" Width="135" Height="58"/>
+        <Button Content="Create New User" HorizontalAlignment="Left" Margin="304,309,0,0" VerticalAlignment="Top" Width="135" Height="58"/>
+
     </Grid>
 </Window>

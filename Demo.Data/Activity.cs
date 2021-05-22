@@ -14,12 +14,11 @@ namespace Demo.Data
     
     public partial class Activity
     {
-        public string ActID { get; set; }
-        public Nullable<System.DateTime> ActDate { get; set; }
-        public string EmpName { get; set; }
-        public string TaskName { get; set; }
-        public Nullable<int> ActTimeHours { get; set; }
-        public Nullable<int> ActTimeMinutes { get; set; }
+        public int ActID { get; set; }
+        public System.DateTime ActDate { get; set; }
+        public int EmpID { get; set; }
+        public int TaskID { get; set; }
+        public System.TimeSpan ActTime { get; set; }
         public string ActDescription { get; set; }
     
         public virtual Employee Employee { get; set; }

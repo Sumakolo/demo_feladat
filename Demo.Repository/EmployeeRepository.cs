@@ -10,7 +10,7 @@ namespace Demo.Repository
 {
     public class EmployeeRepository : IRepository<Employee>
     {
-        DemoDBContext demoDBContext = new DemoDBContext();
+        DemoDBEntities1 demoDBContext = new DemoDBEntities1();
 
         /// <summary>
         /// Add one employee to the database.
@@ -18,7 +18,7 @@ namespace Demo.Repository
         /// <param name="item"></param>
         public void AddOne(Employee item)
         {
-            demoDBContext.employees.Add(item);
+            demoDBContext.Employees.Add(item);
             demoDBContext.SaveChanges();
         }
 
@@ -26,21 +26,21 @@ namespace Demo.Repository
         /// Delete one employee from the database.
         /// </summary>
         /// <param name="item"></param>
-        public void DeleteOne(Employee item)
-        {
-            demoDBContext.employees.Remove(item);
-            demoDBContext.SaveChanges();
-        }
+        //public void DeleteOne(Employee item)
+        //{
+        //    demoDBContext.Employees.Remove(item);
+        //    demoDBContext.SaveChanges();
+        //}
 
         /// <summary>
         /// Delete ont employee from the database by it's id.
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteOneByID(string id)
+        public void DeleteOneByID(int id)
         {
-            Employee emp = demoDBContext.employees.FirstOrDefault(item => item.EmpID == id);
-            DeleteOne(emp);
-            
+            Employee emp = demoDBContext.Employees.FirstOrDefault(item => item.EmpID == id);
+            demoDBContext.Employees.Remove(emp);
+            demoDBContext.SaveChanges();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Demo.Repository
         /// <returns>IList<Employee></returns>
         public IList<Employee> GetAll()
         {
-            return demoDBContext.employees.ToList();
+            return demoDBContext.Employees.ToList();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Demo.Repository
         /// <returns>Employee</returns>
         public Employee GetOneByName(string name)
         {
-            return demoDBContext.employees.FirstOrDefault(item => item.EmpName == name);
+            return demoDBContext.Employees.FirstOrDefault(item => item.EmpUserName == name);
         }
 
         /// <summary>
@@ -67,11 +67,11 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="oldID"></param>
         /// <param name="newItem"></param>
-        public void Update(string oldID, Employee newItem)
+        public void Update(int oldID, Employee newItem)
         {
-            var oldItem = demoDBContext.employees.FirstOrDefault(item => item.EmpID == oldID);
+            var oldItem = demoDBContext.Employees.FirstOrDefault(item => item.EmpID == oldID);
             oldItem.EmpID = newItem.EmpID;
-            oldItem.EmpName = newItem.EmpName;
+            oldItem.EmpUserName = newItem.EmpUserName;
             oldItem.EmpPassword = newItem.EmpPassword;
             demoDBContext.SaveChanges();
         }
@@ -86,7 +86,7 @@ namespace Demo.Repository
             StringBuilder builder = new StringBuilder();
             foreach (var x in employees)
             {
-                builder.AppendLine("EmployeeID:" + x.EmpID + " | Name: " + x.EmpName + " | Password: " + x.EmpPassword);
+                builder.AppendLine("EmployeeID:" + x.EmpID + " | Name: " + x.EmpUserName + " | Password: " + x.EmpPassword);
             }
             return builder;
         }

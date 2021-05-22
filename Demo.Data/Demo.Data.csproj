@@ -71,7 +71,6 @@
     <Compile Include="Activity.cs">
       <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
     </Compile>
-    <Compile Include="DemoDBContext.cs" />
     <Compile Include="DemoEntityDataModell.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,12 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Demo.Models\Demo.Models.csproj">
-      <Project>{cd1270b2-1dbe-4443-92fa-4a99b914167a}</Project>
-      <Name>Demo.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DemoDB.mdf">

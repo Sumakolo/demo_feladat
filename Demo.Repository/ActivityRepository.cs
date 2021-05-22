@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Demo.Data;
 
 namespace Demo.Repository
 {
     public class ActivityRepository : IRepository<Activity>
     {
-        DemoDBContext demoDBContext = new DemoDBContext();
+        DemoDBEntities1 demoDBContext = new DemoDBEntities1();
 
         /// <summary>
         /// Add one activity to the database.
@@ -17,7 +16,7 @@ namespace Demo.Repository
         /// <param name="item"></param>
         public void AddOne(Activity item)
         {
-            demoDBContext.activities.Add(item);
+            demoDBContext.Activities.Add(item);
             demoDBContext.SaveChanges();
         }
 
@@ -25,20 +24,21 @@ namespace Demo.Repository
         /// Delete one activity from the database.
         /// </summary>
         /// <param name="item"></param>
-        public void DeleteOne(Activity item)
-        {
-            demoDBContext.activities.Remove(item);
-            demoDBContext.SaveChanges();
-        }
+        //public void DeleteOne(Activity item)
+        //{
+        //    demoDBContext.Activities.Remove(item);
+        //    demoDBContext.SaveChanges();
+        //}
 
         /// <summary>
         /// Delete one activity from the database by id.
         /// </summary>
         /// <param name="item"></param>
-        public void DeleteOneByID(string id)
+        public void DeleteOneByID(int id)
         {
-            Activity activity = demoDBContext.activities.FirstOrDefault(item => item.ActID == id);
-            DeleteOne(activity);
+            Activity activity = demoDBContext.Activities.FirstOrDefault(item => item.ActID == id);
+            demoDBContext.Activities.Remove(activity);
+            demoDBContext.SaveChanges();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Demo.Repository
         /// <returns></returns>
         public IList<Activity> GetAll()
         {
-            return demoDBContext.activities.ToList();
+            return demoDBContext.Activities.ToList();
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="ActID"></param>
         /// <returns></returns>
-        public Activity GetOneById(string ActID)
+        public Activity GetOneById(int ActID)
         {
-            return demoDBContext.activities.FirstOrDefault(item => item.ActID == ActID);
+            return demoDBContext.Activities.FirstOrDefault(item => item.ActID == ActID);
         }
 
         /// <summary>
@@ -65,15 +65,14 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="oldID"></param>
         /// <param name="newItem"></param>
-        public void Update(string oldID, Activity newItem)
+        public void Update(int oldID, Activity newItem)
         {
-            var oldItem = demoDBContext.activities.FirstOrDefault(item => item.ActID == oldID);
+            var oldItem = demoDBContext.Activities.FirstOrDefault(item => item.ActID == oldID);
             oldItem.ActID = newItem.ActID;
             oldItem.ActDate = newItem.ActDate;
-            oldItem.EmpName = newItem.EmpName;
-            oldItem.TaskName = newItem.TaskName;
-            oldItem.ActTimeHours = newItem.ActTimeHours;
-            oldItem.ActTimeMinutes = newItem.ActTimeMinutes;
+            oldItem.EmpID = newItem.EmpID;
+            oldItem.TaskID = newItem.TaskID;
+            oldItem.ActTime = newItem.ActTime;
             oldItem.ActDescription = newItem.ActDescription;
             demoDBContext.SaveChanges();
         }
@@ -88,11 +87,11 @@ namespace Demo.Repository
             StringBuilder builder = new StringBuilder();
             foreach (var x in activities)
             {
-                builder.AppendLine("ActID: " + x.ActID + " | ActDate: " + x.ActDate + " | EmpName: " + x.EmpName
-                    + " | TaskName: " + x.TaskName + " | ActTime " + x.ActTimeHours + ":" + x.ActTimeMinutes
+                builder.AppendLine("ActID: " + x.ActID + " | ActDate: " + x.ActDate + " | EmpName: " + x.EmpID
+                    + " | TaskName: " + x.TaskID + " | ActTime " + x.ActTime
                     + " | ActDescription: " + x.ActDescription);
             }
             return builder;
-        }    
+        }
     }
 }

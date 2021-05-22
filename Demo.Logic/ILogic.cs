@@ -9,9 +9,8 @@ namespace Demo.Logic
     public interface ILogic<T>
     {
         void Create(T item);
-        void Update(string oldid, T newitem);
-        void Delete(T item);
-        void Delete(string id);
+        void Update(int oldid, T newitem);
+        void Delete(int id);
         IList<T> GetAll();
     }
 }

@@ -11,6 +11,7 @@ namespace Demo.Logic
     public class ActivityLogic : ILogic<Activity>
     {     
         ActivityRepository activityRepository;
+        //TaskLogic tasklogic;
         
         /// <summary>
         /// Constructor for the ActivityLogic class.
@@ -18,7 +19,8 @@ namespace Demo.Logic
         /// <param name="activityRepository"></param>
         public ActivityLogic(ActivityRepository activityRepository)
         {          
-            this.activityRepository = activityRepository;      
+            this.activityRepository = activityRepository;
+            
         }
 
         /// <summary>
@@ -27,23 +29,26 @@ namespace Demo.Logic
         /// <param name="item"></param>
         public void Create(Activity item)
         {
-            activityRepository.AddOne(item);
+            //Data.Task task = new Data.Task();
+            //task.TaskName = item.TaskName;
+            //tasklogic.Create(item.TaskName)
+            //activityRepository.AddOne(item);
         }
 
         /// <summary>
         /// Delete an activity from the database.
         /// </summary>
         /// <param name="item"></param>
-        public void Delete(Activity item)
-        {
-            activityRepository.DeleteOne(item);
-        }
+        //public void Delete(Activity item)
+        //{
+        //    activityRepository.DeleteOne(item);
+        //}
 
         /// <summary>
         /// Delete an activity from the database by it's ID.
         /// </summary>
         /// <param name="id"></param>
-        public void Delete(string id)
+        public void Delete(int id)
         {
             activityRepository.DeleteOneByID(id);
         }
@@ -62,7 +67,7 @@ namespace Demo.Logic
         /// </summary>
         /// <param name="oldid"></param>
         /// <param name="newitem"></param>
-        public void Update(string oldid, Activity newitem)
+        public void Update(int oldid, Activity newitem)
         {
             activityRepository.Update(oldid, newitem);
         }

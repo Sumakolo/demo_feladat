@@ -34,16 +34,16 @@ namespace Demo.Logic
         /// Delete an employee item from the database.
         /// </summary>
         /// <param name="item"></param>
-        public void Delete(Employee item)
-        {
-            employeeRepository.DeleteOne(item);
-        }
+        //public void Delete(Employee item)
+        //{
+        //    employeeRepository.DeleteOne(item);
+        //}
 
         /// <summary>
         /// Delete an employee item from the database by it's ID.
         /// </summary>
         /// <param name="id"></param>
-        public void Delete(string id)
+        public void Delete(int id)
         {
             employeeRepository.DeleteOneByID(id);
         }
@@ -62,7 +62,7 @@ namespace Demo.Logic
         /// </summary>
         /// <param name="oldid"></param>
         /// <param name="newitem"></param>
-        public void Update(string oldid, Employee newitem)
+        public void Update(int oldid, Employee newitem)
         {
             employeeRepository.Update(oldid, newitem);
         }

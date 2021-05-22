@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Demo.Data;
 
 namespace Demo.Repository
 {
-    public class TaskRepository : IRepository<Data.Task>
+    public class TaskRepository : IRepository<Task>
     {
-        DemoDBContext demoDBContext = new DemoDBContext();
+        DemoDBEntities1 demoDBContext = new DemoDBEntities1();
 
         /// <summary>
         /// Add one task to the database.
         /// </summary>
         /// <param name="item"></param>
-        public void AddOne(Data.Task item)
+        public void AddOne(Task item)
         {
-            demoDBContext.tasks.Add(item);
+            demoDBContext.Tasks.Add(item);
             demoDBContext.SaveChanges();
         }
 
@@ -25,29 +24,30 @@ namespace Demo.Repository
         /// Delete one task from the database.
         /// </summary>
         /// <param name="item"></param>
-        public void DeleteOne(Data.Task item)
-        {
-            demoDBContext.tasks.Remove(item);
-            demoDBContext.SaveChanges();
-        }
+        //public void DeleteOne(Task item)
+        //{
+        //    demoDBContext.Tasks.Remove(item);
+        //    demoDBContext.SaveChanges();
+        //}
 
         /// <summary>
         /// Delete ont task from the database by it's id.
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteOneByID(string id)
+        public void DeleteOneByID(int id)
         {
-            Data.Task task = demoDBContext.tasks.FirstOrDefault(item => item.TaskID == id);
-            DeleteOne(task);
+            Task task = demoDBContext.Tasks.FirstOrDefault(item => item.TaskID == id);
+            demoDBContext.Tasks.Remove(task);
+            demoDBContext.SaveChanges();
         }
 
         /// <summary>
         /// Returns all tasks from the database.
         /// </summary>
         /// <returns>IList<Data.Task></returns>
-        public IList<Data.Task> GetAll()
+        public IList<Task> GetAll()
         {
-            return demoDBContext.tasks.ToList();
+            return demoDBContext.Tasks.ToList();
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="name"></param>
         /// <returns>Data.Task</returns>
-        public Data.Task GetOneByName(string name)
+        public Task GetOneByName(string name)
         {
-            return demoDBContext.tasks.FirstOrDefault(item => item.TaskName == name);
+            return demoDBContext.Tasks.FirstOrDefault(item => item.TaskName == name);
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace Demo.Repository
         /// </summary>
         /// <param name="oldID"></param>
         /// <param name="newItem"></param>
-        public void Update(string oldID, Data.Task newItem)
+        public void Update(int oldID, Task newItem)
         {
-            var oldItem = demoDBContext.tasks.FirstOrDefault(item => item.TaskID == oldID);
+            var oldItem = demoDBContext.Tasks.FirstOrDefault(item => item.TaskID == oldID);
             oldItem.TaskID = newItem.TaskID;
             oldItem.TaskName = newItem.TaskName;
             demoDBContext.SaveChanges();
@@ -79,7 +79,7 @@ namespace Demo.Repository
         /// <returns>StringBuilder.</returns>
         public StringBuilder GetTableContents()
         {
-            List<Data.Task> tasks = GetAll().ToList();
+            List<Task> tasks = GetAll().ToList();
             StringBuilder builder = new StringBuilder();
             foreach(var x in tasks)
             {
