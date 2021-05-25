@@ -3,21 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Demo.WPF_App"
+        xmlns:local="clr-namespace:Demo.WPF_App.ViewModels"
         mc:Ignorable="d"
         Title="ActivityWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:MainVM/>
+    </Window.DataContext>
+    
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="320" Margin="10,10,0,0" VerticalAlignment="Top" Width="600"/>
+        <DataGrid ItemsSource="{Binding Path=Employees}" HorizontalAlignment="Left" Height="320" Margin="10,10,0,0" VerticalAlignment="Top" Width="600"/>
         <Button Content="My Activites" HorizontalAlignment="Left" Margin="655,10,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
         <Button Content="Today's Activites" HorizontalAlignment="Left" Margin="655,70,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
-        <Button Content="Add Task" HorizontalAlignment="Left" Margin="655,130,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
-        <Button Content="Add Activity" HorizontalAlignment="Left" Margin="655,190,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
+        <Button Content="Add Task" HorizontalAlignment="Left" Margin="655,130,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="AddTask_Click"/>
+        <Button Content="Add Activity" HorizontalAlignment="Left" Margin="655,190,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="AddActivity_Click"/>
         <Button Content="Update Activity" HorizontalAlignment="Left" Margin="655,250,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
         <Button Content="Delete Activity" HorizontalAlignment="Left" Margin="655,310,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
-        <Button Content="Export to .txt" HorizontalAlignment="Left" Margin="510,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
-        <Button Content= "Back" HorizontalAlignment="Left" Margin="10,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
-        <Button Content="All Users(test)" HorizontalAlignment="Left" Margin="178,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
-        <Button Content="All activities(test)" HorizontalAlignment="Left" Margin="342,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
+        <Button Content="Export to .txt" HorizontalAlignment="Left" Margin="510,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
+        <Button Content= "Back" HorizontalAlignment="Left" Margin="10,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Back_Click"/>
+        <Button Content="All Users(test)" Command="{Binding LoadUsers}" HorizontalAlignment="Left" Margin="178,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777"/>
+        <Button Content="All activities(test)" HorizontalAlignment="Left" Margin="342,355,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" />
 
     </Grid>
 </Window>

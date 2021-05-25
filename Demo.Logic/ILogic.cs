@@ -8,7 +8,7 @@ namespace Demo.Logic
 {
     public interface ILogic<T>
     {
-        void Create(T item);
+        //void Create(T item);
         void Update(int oldid, T newitem);
         void Delete(int id);
         IList<T> GetAll();

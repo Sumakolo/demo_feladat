@@ -21,16 +21,6 @@ namespace Demo.Repository
         }
 
         /// <summary>
-        /// Delete one activity from the database.
-        /// </summary>
-        /// <param name="item"></param>
-        //public void DeleteOne(Activity item)
-        //{
-        //    demoDBContext.Activities.Remove(item);
-        //    demoDBContext.SaveChanges();
-        //}
-
-        /// <summary>
         /// Delete one activity from the database by id.
         /// </summary>
         /// <param name="item"></param>
@@ -44,7 +34,7 @@ namespace Demo.Repository
         /// <summary>
         /// Returns all activities from the database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IList<Activity></returns>
         public IList<Activity> GetAll()
         {
             return demoDBContext.Activities.ToList();
@@ -54,7 +44,7 @@ namespace Demo.Repository
         /// Returns an Activity by its ID.
         /// </summary>
         /// <param name="ActID"></param>
-        /// <returns></returns>
+        /// <returns>Activity</returns>
         public Activity GetOneById(int ActID)
         {
             return demoDBContext.Activities.FirstOrDefault(item => item.ActID == ActID);
@@ -80,7 +70,7 @@ namespace Demo.Repository
         /// <summary>
         /// Returns the repository as a string.
         /// </summary>
-        /// <returns>StringBuilder.</returns>
+        /// <returns>StringBuilder</returns>
         public StringBuilder GetTableContents()
         {
             List<Activity> activities = GetAll().ToList();

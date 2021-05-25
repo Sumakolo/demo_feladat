@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Demo.WPF_App.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,35 @@ namespace Demo.WPF_App
     /// </summary>
     public partial class RegisterWindow : Window
     {
+        private readonly RegisterVM registerVM;
         public RegisterWindow()
         {
+            
+            registerVM = new RegisterVM();
+            DataContext = registerVM;
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
+            var NewWindow = new MainWindow();
+            NewWindow.Show();
+            Window win = Window.GetWindow(this);
+            if (win != null)
+            {
+                win.Close();
+            }
+        }
 
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            var NewWindow = new MainWindow();
+            NewWindow.Show();
+            Window win = Window.GetWindow(this);
+            if (win != null)
+            {
+                win.Close();
+            }
         }
     }
 }

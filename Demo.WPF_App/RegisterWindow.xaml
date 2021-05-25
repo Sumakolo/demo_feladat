@@ -3,18 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Demo.WPF_App"
+        xmlns:local="clr-namespace:Demo.WPF_App.ViewModels"
         mc:Ignorable="d"
         Title="RegisterWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:RegisterVM/>
+    </Window.DataContext>
+
     <Grid>
         <Label Content="Register" Margin="339,50,339.6,333" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="382,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="382,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" TextChanged="TextBox_TextChanged"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="382,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="382,130,0,0" Text="{Binding EmpUserName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="382,182,0,0" Text="{Binding EmpPassword}" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="382,234,0,0" Text="{Binding EmpPassCheck}" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
         <Label Content="Username:" HorizontalAlignment="Left" Margin="250,127,0,0" VerticalAlignment="Top"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="250,179,0,0" VerticalAlignment="Top"/>
         <Label Content="Password again:" HorizontalAlignment="Left" Margin="250,234,0,0" VerticalAlignment="Top"/>
-        <Button Content="Back toLogin" HorizontalAlignment="Left" Margin="40,360,0,0" VerticalAlignment="Top" Width="135" Height="30"/>
-        <Button Content="Login" HorizontalAlignment="Left" Margin="319,288,0,0" VerticalAlignment="Top" Width="135" Height="30"/>
+        <Button Content="Back toLogin" HorizontalAlignment="Left" Margin="40,360,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="Back_Click"/>
+        <Button Content="Login" Command="{Binding AddCommand}" HorizontalAlignment="Left" Margin="319,288,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="Login_Click"/>
     </Grid>
 </Window>

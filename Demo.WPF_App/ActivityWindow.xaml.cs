@@ -23,5 +23,43 @@ namespace Demo.WPF_App
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Clicking the Back button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            var NewWindow = new MainWindow();
+            NewWindow.Show();
+            Window win = Window.GetWindow(this);
+            if (win != null)
+            {
+                win.Close();
+            }
+        }
+
+        /// <summary>
+        /// Clicking the Add Task button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            var NewWindow = new AddTaskWindow();
+            NewWindow.Show();         
+        }
+
+        /// <summary>
+        /// Clicking the Add Activity button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddActivity_Click(object sender, RoutedEventArgs e)
+        {
+            var NewWindow = new AddActivityWindow();
+            NewWindow.Show();
+        }
     }
 }

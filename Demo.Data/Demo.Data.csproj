@@ -70,28 +70,34 @@
   <ItemGroup>
     <Compile Include="Activity.cs">
       <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DemoEntityDataModell.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DemoEntityDataModell.Context.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DemoEntityDataModell.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DemoEntityDataModell.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task.cs">
       <DependentUpon>DemoEntityDataModell.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -111,9 +117,11 @@
     <EntityDeploy Include="DemoEntityDataModell.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DemoEntityDataModell.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EntityDeploy>
     <None Include="DemoEntityDataModell.edmx.diagram">
       <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -125,18 +133,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DemoDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoEntityDataModell.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
       <LastGenOutput>DemoEntityDataModell.Context.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoEntityDataModell.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DemoEntityDataModell.edmx</DependentUpon>
       <LastGenOutput>DemoEntityDataModell.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -32,15 +32,6 @@ namespace Demo.Logic
         }
 
         /// <summary>
-        /// Delete an activity from the database.
-        /// </summary>
-        /// <param name="item"></param>
-        //public void Delete(Activity item)
-        //{
-        //    activityRepository.DeleteOne(item);
-        //}
-
-        /// <summary>
         /// Delete an activity from the database by it's ID.
         /// </summary>
         /// <param name="id"></param>
@@ -52,7 +43,7 @@ namespace Demo.Logic
         /// <summary>
         /// Returns all activities from the database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IList<Activity></returns>
         public IList<Activity> GetAll()
         {
             return activityRepository.GetAll();
@@ -71,7 +62,7 @@ namespace Demo.Logic
         /// <summary>
         /// Returns the the activities data from the database as a string.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>StringBuilder</returns>
         public StringBuilder GetActivityData()
         {
             return activityRepository.GetTableContents();

@@ -23,5 +23,19 @@ namespace Demo.WPF_App
         {
             InitializeComponent();
         }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Window win = Window.GetWindow(this);
+            if (win != null)
+            {
+                win.Close();
+            }
+        }
     }
 }

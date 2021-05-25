@@ -10,9 +10,9 @@
         <Label Content="Add new Task" Margin="154,30,154.6,0" VerticalAlignment="Top"/>
         <Label Content="Task:" HorizontalAlignment="Left" Margin="90,77,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="198,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
-        <Button Content= "Back" HorizontalAlignment="Left" Margin="30,360,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
-        <Button Content= "Add Activity" HorizontalAlignment="Left" Margin="270,360,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
+        <Button Content= "Back" HorizontalAlignment="Left" Margin="30,360,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Back_Click" />
+        <Button Content= "Add Activity" HorizontalAlignment="Left" Margin="270,360,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Add_Click"/>
         <DataGrid HorizontalAlignment="Left" Height="156" Margin="27,121,0,0" VerticalAlignment="Top" Width="343"/>
-        <Button Content= "List Tasks" HorizontalAlignment="Left" Margin="150,300,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="Button_Click"/>
+        <Button Content= "List Tasks" HorizontalAlignment="Left" Margin="150,300,0,0" VerticalAlignment="Top" Width="100" Height="40" RenderTransformOrigin="0.52,1.777" Click="ListTasks_Click" />
     </Grid>
 </Window>

@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="EmpID" />
           </Key>
-          <Property Name="EmpID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpUserName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="EmpPassword" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>

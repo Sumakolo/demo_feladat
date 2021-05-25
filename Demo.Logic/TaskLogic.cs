@@ -30,15 +30,6 @@ namespace Demo.Logic
         }
 
         /// <summary>
-        /// Delete a Task item from the database.
-        /// </summary>
-        /// <param name="item"></param>
-        //public void Delete(Data.Task item)
-        //{
-        //    taskRepository.DeleteOne(item);
-        //}
-
-        /// <summary>
         /// Delete a Task item from the database by it's ID.
         /// </summary>
         /// <param name="id"></param>
@@ -50,7 +41,7 @@ namespace Demo.Logic
         /// <summary>
         /// Returns all Task items.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IList<Task></returns>
         public IList<Task> GetAll()
         {
             return taskRepository.GetAll();
@@ -69,7 +60,7 @@ namespace Demo.Logic
         /// <summary>
         /// Returns the data from the Task database as a string.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>StringBuilder</returns>
         public StringBuilder GetTaskData()
         {
             return taskRepository.GetTableContents();

@@ -21,16 +21,6 @@ namespace Demo.Repository
         }
 
         /// <summary>
-        /// Delete one task from the database.
-        /// </summary>
-        /// <param name="item"></param>
-        //public void DeleteOne(Task item)
-        //{
-        //    demoDBContext.Tasks.Remove(item);
-        //    demoDBContext.SaveChanges();
-        //}
-
-        /// <summary>
         /// Delete ont task from the database by it's id.
         /// </summary>
         /// <param name="id"></param>
@@ -76,7 +66,7 @@ namespace Demo.Repository
         /// <summary>
         /// Returns the repository as a string.
         /// </summary>
-        /// <returns>StringBuilder.</returns>
+        /// <returns>StringBuilder</returns>
         public StringBuilder GetTableContents()
         {
             List<Task> tasks = GetAll().ToList();

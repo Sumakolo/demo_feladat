@@ -25,19 +25,17 @@ namespace Demo.Logic
         /// Add a new employee item to the database.
         /// </summary>
         /// <param name="item"></param>
-        public void Create(Employee item)
+        public void Create(string userName, string password1, string password2)
         {
-            employeeRepository.AddOne(item);
+            if (PasswordCheck(password1, password2))
+            {
+                Employee employee = new Employee();
+                employee.EmpUserName = userName;
+                employee.EmpPassword = password1;
+                employeeRepository.AddOne(employee);
+            }    
+            
         }
-
-        /// <summary>
-        /// Delete an employee item from the database.
-        /// </summary>
-        /// <param name="item"></param>
-        //public void Delete(Employee item)
-        //{
-        //    employeeRepository.DeleteOne(item);
-        //}
 
         /// <summary>
         /// Delete an employee item from the database by it's ID.
@@ -51,10 +49,28 @@ namespace Demo.Logic
         /// <summary>
         /// Returns all employees from the database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IList<Employee></returns>
         public IList<Employee> GetAll()
         {
             return employeeRepository.GetAll();
+        }
+
+        /// <summary>
+        /// Get an employee by it's name, if the password is correct.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Employee</returns>
+        public Employee GetEmployee(string name, string password)
+        {
+            Employee emp = employeeRepository.GetOneByName(name);
+            if (emp.EmpPassword == password)
+            {
+                return emp;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         /// <summary>
@@ -70,10 +86,21 @@ namespace Demo.Logic
         /// <summary>
         /// Returns the employees data from the database as a string.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>StringBuilder</returns>
         public StringBuilder GetEmployeeData()
         {
             return employeeRepository.GetTableContents();
+        }
+
+        /// <summary>
+        /// Check if the same password has been given during the registration.
+        /// </summary>
+        /// <param name="password1"></param>
+        /// <param name="password2"></param>
+        /// <returns>bool</returns>
+        public bool PasswordCheck(string password1, string password2)
+        {
+            return (password1 == password2);
         }
     }
 }
