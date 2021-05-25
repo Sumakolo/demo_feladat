@@ -17,7 +17,7 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="328,124,0,0" TextWrapping="Wrap" Text="{Binding Path=EmpUserName}" VerticalAlignment="Top" Width="135"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="328,174,0,0" TextWrapping="Wrap" Text="{Binding Path=EmpPassword}" VerticalAlignment="Top" Width="135"/>
 
-        <Label Content="Activity Manager" Margin="315,32,316.6,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Activity Manager" Margin="314,35,305.6,0" VerticalAlignment="Top" FontSize="20"/>
         <Button Content="Login" HorizontalAlignment="Left" Margin="328,230,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="Login_Click" Command="{Binding Path=LoginCommand}"/>
         <Button Content="Create New User" HorizontalAlignment="Left" Margin="328,280,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="CreateUser_Click"/>
         <Button Content="Exit" HorizontalAlignment="Left" Margin="328,330,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="Exit_Click"/>

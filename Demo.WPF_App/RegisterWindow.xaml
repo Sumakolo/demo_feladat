@@ -12,7 +12,7 @@
     </Window.DataContext>
 
     <Grid>
-        <Label Content="Register" Margin="339,50,339.6,333" FontSize="20"/>
+        <Label Content="Register" Margin="339,45,339.6,338" FontSize="20"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="382,130,0,0" Text="{Binding EmpUserName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="382,182,0,0" Text="{Binding EmpPassword}" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="382,234,0,0" Text="{Binding EmpPassCheck}" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
